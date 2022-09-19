@@ -4,36 +4,36 @@ import { selectCartItems, selectCartTotal } from '../../store/cart/cart.selector
 
 import CheckoutItem from '../../component/checkout-item/checkout-item.component';
 
-import './checkout.styles.scss'
+import { CheckoutContainer, CheckoutHeader, HeaderBlock, Total } from './checkout.styles';
 
 const CheckOut = () => {
     const cartItems = useSelector(selectCartItems);
     const cartTotal = useSelector(selectCartTotal);
 
     return (
-        <div className='checkout-container'>
-            <div className='checkout-header'>
-                <div className='header-block'>
+        <CheckoutContainer>
+            <CheckoutHeader>
+                <HeaderBlock>
                     <span>PRODUCT</span>
-                </div>
-                <div className='header-block'>
+                </HeaderBlock>
+                <HeaderBlock>
                     <span>DESCRIPTION</span>
-                </div>
-                <div className='header-block'>
+                </HeaderBlock>
+                <HeaderBlock>
                     <span>QUANTITY</span>
-                </div>
-                <div className='header-block'>
+                </HeaderBlock>
+                <HeaderBlock>
                     <span>PRICE</span>
-                </div>
-                <div className='header-block'>
+                </HeaderBlock>
+                <HeaderBlock>
                     <span>REMOVE</span>
-                </div>
-            </div>
+                </HeaderBlock>
+            </CheckoutHeader>
             {cartItems.map((cartItem) =>
                     <CheckoutItem key={cartItem.id} cartItem={cartItem} />
             )}
-            <span className='Total'>Total: ฿{cartTotal}</span>
-        </div>
+            <Total>Total: ฿{cartTotal}</Total>
+        </CheckoutContainer>
        
     )
 }
